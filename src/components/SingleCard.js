@@ -1,10 +1,10 @@
-import { Card, Button } from "react-bootstrap";
-import { useState, useEffect } from "react";
-import Avatar from "@material-ui/core/Avatar";
-import Emoji from "react-emoji-render";
-import backg from "../git9.jpg";
-import axios from "axios";
-import { isEmpty } from "lodash";
+import { Card, Button } from 'react-bootstrap';
+import { useState, useEffect } from 'react';
+import Avatar from '@material-ui/core/Avatar';
+import Emoji from 'react-emoji-render';
+import backg from '../git9.jpg';
+import axios from 'axios';
+import { isEmpty } from 'lodash';
 
 const SingleCard = (props) => {
 	// console.log(props.repo)
@@ -38,17 +38,17 @@ const SingleCard = (props) => {
 	return (
 		<div
 			style={{
-				width: "100%",
-				margin: "10px",
-				padding: "10px",
-				WebkitTextStroke: "0.4px white",
-				height: "100%",
-			}}
-		>
+				minWidth: '380px',
+				maxWidth: '380px',
+				margin: '10px',
+				padding: '10px',
+				WebkitTextStroke: '0.4px white',
+				minHeight: 'fit-content',
+			}}>
 			{wasRejected && (
-				<small style={{ color: "red" }}>
-					You are seeing this message because github imposes rate limit on
-					requests. Please refresh the page or wait a couple of minutes.
+				<small style={{ color: 'red' }}>
+					You are seeing this message because github imposes rate limit on requests.
+					Please refresh the page or wait a couple of minutes.
 				</small>
 			)}
 			{isLoading ? (
@@ -60,23 +60,21 @@ const SingleCard = (props) => {
 							className="container container-fluid bg-dark text-white"
 							border="info"
 							style={{
-								borderRadius: "1rem",
-								borderWidth: "0.2rem",
-								height: "100%",
+								borderRadius: '1rem',
+								borderWidth: '0.2rem',
+								height: '100%',
 								backgroundImage: `url(${backg})`,
-							}}
-						>
+							}}>
 							<Card.Body>
 								<div
 									style={{
-										borderColor: "white",
-										borderWidth: "0.2rem",
-									}}
-								>
+										borderColor: 'white',
+										borderWidth: '0.2rem',
+									}}>
 									<Avatar
 										style={{
-											display: "inline-block",
-											border: "1.5px solid lightgray",
+											display: 'inline-block',
+											border: '1.5px solid lightgray',
 										}}
 										src={repo.owner.avatar_url}
 									/>
@@ -84,8 +82,8 @@ const SingleCard = (props) => {
 								</div>
 								<Card.Text>
 									{repo.description ? (
-										<span style={{ WebkitTextStroke: "0.4px white" }}>
-											<Emoji text={repo.description} />{" "}
+										<span style={{ WebkitTextStroke: '0.4px white' }}>
+											<Emoji text={repo.description} />{' '}
 										</span>
 									) : (
 										<></>
@@ -94,11 +92,12 @@ const SingleCard = (props) => {
 								<Card.Text>Issue description:</Card.Text>
 								<Card.Text>{props.repo.title}</Card.Text>
 								<Card.Text> Language: {repo.language}</Card.Text>
-								<a href={`${props.repo.html_url}/labels/good%20first%20issue`} target="__blank">
+								<a
+									href={`${props.repo.html_url}/labels/good%20first%20issue`}
+									target="__blank">
 									<Button
 										variant="outline-info"
-										onClick={() => setOpen(!openIssues)}
-									>
+										onClick={() => setOpen(!openIssues)}>
 										Go To Issues
 									</Button>
 								</a>
